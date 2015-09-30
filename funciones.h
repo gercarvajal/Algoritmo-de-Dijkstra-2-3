@@ -57,32 +57,3 @@ int menor_valor() {
 
 
 // funcion Dijkstra 
-void dijkstra (int origen, int destino)
-{
-   int i, last, x;
-   Tnodo *p;
-   // inicializacion
-   for (i = 0; i < MaxNodos; i++) {
-      d[i] = INT_MAX; //"infinito"
-      marca[i] = 0;
-      predecesores[i] = -1;
-   }
-   d[origen] = 0;
-   marca[origen] = 1;
-   last = origen;
-   while (marca[destino] == 0) { //hasta que no lleguemos al destino
-      p = Lista[last];
-      while (p != NULL){   //para todos los nodos adyacendes
-          if (marca[p->etiqueta] == 0) //si no ha sido visitado
-                  if (d[p->etiqueta] > d[last] + return_peso(last, p->etiqueta))
-              {
-                      d[p->etiqueta] = d[last] + return_peso(last, p->etiqueta);
-                      predecesores[p->etiqueta] = last;
-                  } 
-           p = p->sig;
-      } 
-      x = menor_valor();    
-      marca[x] = 1;
-      last = x;
-   } // fin mientras
-}
