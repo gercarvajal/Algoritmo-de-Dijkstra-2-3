@@ -3,6 +3,14 @@
 #include <limits.h>
 #define MaxNodos 8
 
+
+Tnodo *Lista[MaxNodos]; //lista de adyacencia
+int marca[MaxNodos]; //visitados
+int predecesores[MaxNodos]; //ruta
+float d[MaxNodos]; // distancia - peso
+int Num_Vertices; //numero de vertices
+int tipo; //1 no dirigido, 0 dirigido
+
 // Inicializa la lista de adyacencia a NULL 
 void init() {
     int i;
