@@ -15,7 +15,7 @@
 
 main(){
   
-
+cargar_grafo ();
   
 
 }
