@@ -11,6 +11,26 @@ float d[MaxNodos]; // distancia - peso
 int Num_Vertices; //numero de vertices
 int tipo; //1 no dirigido, 0 dirigido
 
+
+void cargar_grafo (char *fn) {
+  FILE *fp;
+  int vortex_i, vortex_f; //vertices de inicio y final
+  float peso;
+  if ((fp = fopen ("grafo.txt", "r")) == NULL)
+  {
+       printf ("No se puede abrir el archivo\n", fn);
+       exit(0);         
+   }
+   fscanf (fp, "%d\n", &tipo);
+   fscanf (fp, "%d\n", &Num_Vertices); //Num_Vertices es una vble global 
+        while (!feof(fp))
+        {
+             fscanf(fp, "%d %d %f\n", &v_in, &v_fn, &peso);
+             inserta(vortex_i, vortex_f, peso);
+             inserta (vortex_f, vortex_i, peso);
+        }
+   fclose (fp);
+} 
 // Inicializa la lista de adyacencia a NULL 
 void init() {
     int i;
@@ -18,7 +38,6 @@ void init() {
         Lista[i] = NULL;    
 }
 
-// imprime lista de adyacencia
 void mostrar_lista_adyacencia () {
    Tnodo *q;
    int i;
@@ -35,7 +54,6 @@ void mostrar_lista_adyacencia () {
    }
 }
 
-//Inserta los nodos en la lista 
 void inserta (int Vorigen, int Vfinal, float peso) {
     Tnodo *q;
     q = (Tnodo*) malloc (sizeof(Tnodo) * 1);
@@ -48,7 +66,6 @@ void inserta (int Vorigen, int Vfinal, float peso) {
     Lista[Vorigen-1] = q;
 }
 
-//elige mejor valor
 int menor_valor() {
    int i, verticeMenor;
    float menor;
